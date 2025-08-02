@@ -1,0 +1,21 @@
+version: 0.0
+
+os: linux
+files:
+  - source: /
+    destination: /home/ec2-user/nodeapp
+
+
+hooks:
+  BeforeInstall:
+    - location: scripts/BeforeInstall.sh
+      timeout: 60
+      runas: ec2-user
+  AfterInstall:
+    - location: sripts/AfterInstall.sh
+      timeout: 60
+      runas: ec2-user
+  ApplicationStart:
+    - location: scripts/ApplicationStart.sh
+      timeout: 60
+      runas: ec2-user      
