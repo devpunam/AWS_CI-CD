@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 18
+      nodejs: 21
     commands:
       - echo "Installing Dependencies"
       - npm install
@@ -17,7 +17,7 @@ phases:
       - mkdir -p deploy
       # Copy only build output (dist) and required files
       - cp -r dist/* deploy/
-      - cp appspec.yaml deploy/
+      #- cp appspec.yaml deploy/
       - cp -r scripts/ deploy/scripts/
 
 artifacts:
