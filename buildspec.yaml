@@ -13,12 +13,14 @@ phases:
       - npm run build
   post_build:
     commands:
-      - echo "Build Completed on 'date'"
+      - echo "Build Completed on $(date)"
       - mkdir -p deploy
-      - cp -r * deploy/
+      # Copy only build output (dist) and required files
+      - cp -r dist/* deploy/
       - cp appspec.yaml deploy/
-      - cp -r scripts/ deploy/scripts/    
+      - cp -r scripts/ deploy/scripts/
+
 artifacts:
   files:
-   -deploy/**/*
-  discard-paths: no      
+    - deploy/**/*
+  discard-paths: no
